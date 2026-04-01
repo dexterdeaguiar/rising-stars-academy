@@ -1,0 +1,212 @@
+{
+  "educare": [
+    {
+      "id": "educare-1",
+      "name": "Staff Member Name",
+      "role": "Head of Educare",
+      "qualifications": "B.Ed (Early Childhood Development), NPDE",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    },
+    {
+      "id": "educare-2",
+      "name": "Staff Member Name",
+      "role": "Lead Educator",
+      "qualifications": "Diploma in ECD, NPDE",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    },
+    {
+      "id": "educare-3",
+      "name": "Staff Member Name",
+      "role": "Educator - Baby Class",
+      "qualifications": "Certificate in ECD",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    },
+    {
+      "id": "educare-4",
+      "name": "Staff Member Name",
+      "role": "Educator - Toddlers",
+      "qualifications": "Certificate in ECD",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    }
+  ],
+  "primary": [
+    {
+      "id": "primary-1",
+      "name": "Staff Member Name",
+      "role": "Principal",
+      "department": "Senior Management",
+      "qualifications": "B.Ed (Primary Education), M.Ed",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    },
+    {
+      "id": "primary-2",
+      "name": "Staff Member Name",
+      "role": "Grade 1-2 Teacher",
+      "department": "Foundation Phase",
+      "qualifications": "B.Ed (Primary Education)",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    },
+    {
+      "id": "primary-3",
+      "name": "Staff Member Name",
+      "role": "Mathematics Head",
+      "department": "Intermediate Phase",
+      "qualifications": "B.Ed (Mathematics), NPDE",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    },
+    {
+      "id": "primary-4",
+      "name": "Staff Member Name",
+      "role": "English Head",
+      "department": "Intermediate Phase",
+      "qualifications": "B.Ed (Languages), NPDE",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    }
+  ],
+  "high_school": [
+    {
+      "id": "high-1",
+      "name": "Staff Member Name",
+      "role": "Headmaster / Headmistress",
+      "department": "Senior Management",
+      "qualifications": "B.Sc (Education), M.Ed (School Leadership)",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    },
+    {
+      "id": "high-2",
+      "name": "Staff Member Name",
+      "role": "Head of Mathematics",
+      "department": "Sciences Stream",
+      "qualifications": "B.Sc (Mathematics), B.Ed, NPDE",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    },
+    {
+      "id": "high-3",
+      "name": "Staff Member Name",
+      "role": "Head of English",
+      "department": "Humanities Stream",
+      "qualifications": "B.A (English), B.Ed, NPDE",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    },
+    {
+      "id": "high-4",
+      "name": "Staff Member Name",
+      "role": "Career Guidance Counselor",
+      "department": "Student Services",
+      "qualifications": "B.A (Psychology), B.Ed, Career Guidance Diploma",
+      "bio": "Brief bio or experience summary",
+      "photo": "path/to/photo.jpg",
+      "email": "name@risingstarsacademy.co.za"
+    }
+  ],
+  "contact": {
+    "general": {
+      "phone": "+27 (0) 11 555 1234",
+      "email": "info@risingstarsacademy.co.za",
+      "hours": "Mon - Fri: 8:00 AM - 4:00 PM"
+    },
+    "admissions": {
+      "phone": "+27 (0) 11 555 5678",
+      "email": "admissions@risingstarsacademy.co.za"
+    },
+    "location": {
+      "address": "123 Main Street, Johannesburg, South Africa",
+      "suburb": "Johannesburg",
+      "province": "Gauteng",
+      "postal_code": "2000",
+      "map_url": "https://maps.google.com/?q="
+    }
+  },
+  "fees_2026": {
+    "currency": "ZAR",
+    "educare": [
+      {
+        "class": "Baby Class (3-18 months)",
+        "monthly": 0,
+        "annual": 0,
+        "deposit": 0
+      },
+      {
+        "class": "Toddlers (18 months - 3 years)",
+        "monthly": 0,
+        "annual": 0,
+        "deposit": 0
+      },
+      {
+        "class": "Grade RR (4-5 years)",
+        "monthly": 0,
+        "annual": 0,
+        "deposit": 0
+      },
+      {
+        "class": "Grade R (5-6 years)",
+        "monthly": 0,
+        "annual": 0,
+        "deposit": 0
+      }
+    ],
+    "primary": [
+      {
+        "grade": "Grade 1",
+        "monthly": 0,
+        "annual": 0,
+        "deposit": 0
+      },
+      {
+        "grade": "Grade 2-3",
+        "monthly": 0,
+        "annual": 0,
+        "deposit": 0
+      },
+      {
+        "grade": "Grade 4-7",
+        "monthly": 0,
+        "annual": 0,
+        "deposit": 0
+      }
+    ],
+    "high_school": [
+      {
+        "grade": "Grade 8-9",
+        "monthly": 0,
+        "annual": 0,
+        "deposit": 0
+      },
+      {
+        "grade": "Grade 10-12",
+        "monthly": 0,
+        "annual": 0,
+        "deposit": 0
+      }
+    ],
+    "extras": {
+      "shuttle_one_way": "TBD",
+      "shuttle_return": "TBD",
+      "lunch": "TBD",
+      "aftercare": "TBD",
+      "sports": "Optional"
+    }
+  }
+}
