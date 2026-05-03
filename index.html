@@ -4,6 +4,10 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Rising Stars Academy - Website Prototype</title>
+<link rel="icon" href="assets/favicon.png" type="image/png"/>
+<link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png"/>
+<link rel="manifest" href="site.webmanifest"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -50,6 +54,7 @@ tailwind.config = {
   @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   .counter { font-variant-numeric: tabular-nums; }
   .timeline-line { position: absolute; left: 50%; width: 2px; top: 0; bottom: 0; background: #e5e7eb; transform: translateX(-50%); }
+  .gallery-active { background-color: #13a4ec !important; color: #fff !important; }
   @media (max-width: 768px) { .timeline-line { left: 1.5rem; } }
 </style>
 </head>
@@ -59,7 +64,7 @@ tailwind.config = {
 <header class="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-md shadow-sm">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3">
     <a onclick="showPage('home')" class="flex items-center gap-3 cursor-pointer">
-      <div class="flex items-center justify-center h-10 w-10 rounded-xl bg-brand text-white font-black text-lg">RS</div>
+      <img src="assets/brand/rs-logo-mark-320.png" alt="Rising Stars Academy logo" class="h-12 w-12 shrink-0 object-contain"/>
       <div class="flex flex-col">
         <span class="text-lg font-bold text-gray-900 leading-tight">Rising Stars Academy</span>
         <span class="text-[10px] font-medium text-gray-400 uppercase tracking-widest">Nurturing Future Leaders</span>
@@ -67,8 +72,6 @@ tailwind.config = {
     </a>
     <nav class="hidden lg:flex items-center gap-1" id="mainNav">
       <a onclick="showPage('home')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="home">Home</a>
-      <a onclick="showPage('about')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="about">About</a>
-      <a onclick="showPage('whyrisingstars')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="whyrisingstars">Why Rising Stars</a>
       <div class="relative group">
         <a class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all flex items-center gap-1" data-page="schools">
           Our Schools <span class="material-symbols-outlined text-sm">expand_more</span>
@@ -88,9 +91,8 @@ tailwind.config = {
           </a>
         </div>
       </div>
-      <a onclick="showPage('admissions')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="admissions">Enrollments &amp; Fees</a>
-      <a onclick="showPage('staff')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="staff">Our Staff</a>
-      <a onclick="showPage('gallery')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="gallery">Gallery</a>
+      <a onclick="showPage('admissions')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="admissions">Admissions</a>
+      <a onclick="showPage('whyrisingstars')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="whyrisingstars">Why Rising Stars</a>
       <a onclick="showPage('contact')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="contact">Contact</a>
     </nav>
     <div class="flex items-center gap-2">
@@ -103,14 +105,16 @@ tailwind.config = {
   <!-- Mobile menu -->
   <div id="mobileMenu" class="hidden lg:hidden border-t border-gray-100 bg-white px-4 py-4 space-y-1">
     <a onclick="showPage('home');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Home</a>
-    <a onclick="showPage('about');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">About</a>
-    <a onclick="showPage('whyrisingstars');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Why Rising Stars</a>
+    <p class="px-4 pt-3 text-[11px] font-bold uppercase tracking-widest text-gray-400">Our Schools</p>
     <a onclick="showPage('educare');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-educare hover:bg-educare-light cursor-pointer pl-8">Little Stars Educare</a>
     <a onclick="showPage('primarysch');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-prim hover:bg-prim-light cursor-pointer pl-8">Rising Stars Primary</a>
     <a onclick="showPage('highsch');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-high hover:bg-high-light cursor-pointer pl-8">Rising Stars High</a>
-    <a onclick="showPage('admissions');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Enrollments &amp; Fees</a>
-    <a onclick="showPage('staff');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Our Staff</a>
-    <a onclick="showPage('gallery');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Gallery</a>
+    <p class="px-4 pt-3 text-[11px] font-bold uppercase tracking-widest text-gray-400">Explore</p>
+    <a onclick="showPage('admissions');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Admissions</a>
+    <a onclick="showPage('whyrisingstars');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Why Rising Stars</a>
+    <a onclick="showPage('about');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">About</a>
+    <a onclick="showPage('staff');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer">Our Staff</a>
+    <a onclick="showPage('gallery');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer">Gallery</a>
     <a onclick="showPage('contact');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Contact</a>
   </div>
 </header>
@@ -118,11 +122,7 @@ tailwind.config = {
 <!-- ==================== HOME PAGE ==================== -->
 <div id="page-home" class="page active fade-in">
   <!-- Hero -->
-  <section class="hero-gradient relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-      <div class="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-    </div>
+  <section class="relative overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.94) 0%, rgba(27,58,92,0.78) 46%, rgba(19,164,236,0.22) 100%), url('assets/featured/home-hero.jpg');">
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28 lg:py-36">
       <div class="max-w-3xl">
         <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
@@ -131,7 +131,7 @@ tailwind.config = {
         </div>
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
           Nurturing Bright Minds,<br/>
-          <span class="text-primary/80">Shaping Future Leaders</span>
+          <span class="text-sky-200">Shaping Future Leaders</span>
         </h1>
         <p class="mt-6 max-w-xl text-lg text-white/80 leading-relaxed">
           From 3 months to Grade 12, Rising Stars Academy provides a holistic CAPS-aligned education across three specialised schools — all on one campus.
@@ -154,7 +154,7 @@ tailwind.config = {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Educare -->
         <div onclick="showPage('educare')" class="school-card cursor-pointer rounded-2xl border-2 border-educare/20 bg-white overflow-hidden shadow-sm">
-          <div class="h-48 flex items-center justify-center relative bg-cover bg-center" style="background-image: linear-gradient(rgba(230,126,34,0.45), rgba(230,126,34,0.45)), url('Assets/4P2A6116copy.jpg');">
+          <div class="h-48 flex items-center justify-center relative bg-cover bg-center" style="background-image: linear-gradient(rgba(230,126,34,0.46), rgba(120,55,10,0.35)), url('assets/featured/educare-play.jpg');">
             <div class="text-center text-white drop-shadow-sm">
               <span class="material-symbols-outlined text-5xl mb-2">child_care</span>
               <h3 class="text-xl font-bold">Little Stars Educare</h3>
@@ -170,7 +170,7 @@ tailwind.config = {
         </div>
         <!-- Primary -->
         <div onclick="showPage('primarysch')" class="school-card cursor-pointer rounded-2xl border-2 border-prim/20 bg-white overflow-hidden shadow-sm">
-          <div class="h-48 flex items-center justify-center relative bg-cover bg-center" style="background-image: linear-gradient(rgba(39,174,96,0.45), rgba(39,174,96,0.45)), url('Assets/4P2A6124copy.jpg');">
+          <div class="h-48 flex items-center justify-center relative bg-cover bg-center" style="background-image: linear-gradient(rgba(39,174,96,0.48), rgba(16,90,48,0.35)), url('assets/featured/primary-hero.jpg');">
             <div class="text-center text-white drop-shadow-sm">
               <span class="material-symbols-outlined text-5xl mb-2">auto_stories</span>
               <h3 class="text-xl font-bold">Rising Stars Primary</h3>
@@ -186,7 +186,7 @@ tailwind.config = {
         </div>
         <!-- High -->
         <div onclick="showPage('highsch')" class="school-card cursor-pointer rounded-2xl border-2 border-high/20 bg-white overflow-hidden shadow-sm">
-          <div class="h-48 flex items-center justify-center relative bg-cover bg-center" style="background-image: linear-gradient(rgba(142,68,173,0.45), rgba(142,68,173,0.45)), url('Assets/4P2A6153copy.jpg');">
+          <div class="h-48 flex items-center justify-center relative bg-cover bg-center" style="background-image: linear-gradient(rgba(142,68,173,0.48), rgba(71,33,89,0.38)), url('assets/featured/high-hero.jpg');">
             <div class="text-center text-white drop-shadow-sm">
               <span class="material-symbols-outlined text-5xl mb-2">school</span>
               <h3 class="text-xl font-bold">Rising Stars High</h3>
@@ -205,7 +205,7 @@ tailwind.config = {
   </section>
 
   <!-- Stats -->
-  <section class="bg-brand py-12 sm:py-16">
+  <section class="relative overflow-hidden bg-cover bg-center py-12 sm:py-16" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.96), rgba(27,58,92,0.82)), url('assets/featured/home-hero.jpg');">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
         <div><div class="text-3xl sm:text-4xl font-black text-white counter">500+</div><div class="mt-1 text-sm text-white/60 font-medium">Students Enrolled</div></div>
@@ -249,6 +249,32 @@ tailwind.config = {
     </div>
   </section>
 
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="mb-10 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">What Parents Ask Most</h2>
+        <p class="mx-auto mt-3 max-w-2xl text-gray-600">Clear answers to the practical questions families usually need before applying or booking a tour.</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        <article class="rounded-xl border border-gray-200 bg-gray-50 p-6">
+          <span class="material-symbols-outlined text-primary text-3xl">schedule</span>
+          <h3 class="mt-4 font-bold text-gray-900">Can we visit before applying?</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">Yes. A campus tour is the best way to see the classrooms, facilities, and daily rhythm before choosing a phase.</p>
+        </article>
+        <article class="rounded-xl border border-gray-200 bg-gray-50 p-6">
+          <span class="material-symbols-outlined text-primary text-3xl">description</span>
+          <h3 class="mt-4 font-bold text-gray-900">What documents are needed?</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">Families generally need learner details, parent contact details, ID or birth certificate, latest report where applicable, and proof of address.</p>
+        </article>
+        <article class="rounded-xl border border-gray-200 bg-gray-50 p-6">
+          <span class="material-symbols-outlined text-primary text-3xl">directions_bus</span>
+          <h3 class="mt-4 font-bold text-gray-900">Is transport available?</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600">Shuttle options are available, including one-way and return options. The admissions team can confirm current routes and fees.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="mx-4 sm:mx-6 mb-16 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 p-8 sm:p-12 text-center">
     <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Enrollments Open for 2026</h2>
@@ -262,7 +288,7 @@ tailwind.config = {
 
 <!-- ==================== ABOUT PAGE ==================== -->
 <div id="page-about" class="page fade-in">
-  <section class="bg-brand py-16 sm:py-24">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.95), rgba(27,58,92,0.72)), url('assets/gallery/primary-classroom.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">About Rising Stars Academy</h2>
       <p class="mt-4 text-lg text-white/70">Discover our rich history, core values, and commitment to nurturing future leaders.</p>
@@ -287,15 +313,32 @@ tailwind.config = {
   </section>
   <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 grid md:grid-cols-2 gap-12">
-      <div><h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3><p class="text-gray-600 leading-relaxed">To be a leading educational institution in Johannesburg, recognised for innovative teaching methods, committed to developing students who make a positive impact on the community.</p></div>
-      <div><h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3><p class="text-gray-600 leading-relaxed">To provide a nurturing and challenging environment following the CAPS curriculum, empowering students to reach their full potential, develop critical thinking skills, and become responsible global citizens.</p></div>
+      <div><h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3><p class="text-gray-600 leading-relaxed">To ensure every learner is empowered to reach their full potential, equipped with the skills, confidence, and resilience needed to succeed in the real world.</p></div>
+      <div><h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3><p class="text-gray-600 leading-relaxed">To provide a caring, well-rounded CAPS-aligned education that balances academic excellence, personal development, physical growth, and community values.</p></div>
+    </div>
+  </section>
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6">
+      <div class="rounded-2xl border border-gray-200 bg-gradient-to-br from-primary/5 to-accent/5 p-8 sm:p-10">
+        <p class="text-sm font-bold uppercase tracking-widest text-primary">From Our Principal</p>
+        <blockquote class="mt-4 text-xl font-semibold leading-relaxed text-gray-900">"We are a family-based school with teachers and assistants dedicated to providing the best foundation for our children. It is our passion to help and encourage each child to individually achieve their full potential."</blockquote>
+        <p class="mt-4 text-sm font-bold text-gray-700">Jessica Austin</p>
+      </div>
+    </div>
+  </section>
+  <section class="mx-4 sm:mx-6 mb-16 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 p-8 sm:p-12 text-center">
+    <h3 class="text-3xl font-bold text-gray-900">See the school in person</h3>
+    <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-700">The best way to understand the Rising Stars family is to visit the campus, meet the team, and ask questions face to face.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a onclick="bookTour('Rising Stars Academy')" class="flex h-12 items-center justify-center rounded-lg bg-primary px-7 text-base font-bold text-white shadow-lg transition-transform hover:scale-105 cursor-pointer">Book a Tour</a>
+      <a onclick="showPage('whyrisingstars')" class="flex h-12 items-center justify-center rounded-lg border-2 border-primary px-7 text-base font-bold text-primary transition-all hover:bg-primary hover:text-white cursor-pointer">Why Families Choose Us</a>
     </div>
   </section>
 </div>
 
 <!-- ==================== WHY RISING STARS PAGE ==================== -->
 <div id="page-whyrisingstars" class="page fade-in">
-  <section class="bg-brand py-16 sm:py-24">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.95), rgba(27,58,92,0.66)), url('assets/featured/swimming-action.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Why Rising Stars?</h2>
       <p class="mt-4 text-lg text-white/70">The key reasons families choose Rising Stars Academy from first steps to matric.</p>
@@ -363,6 +406,64 @@ tailwind.config = {
     </div>
   </section>
 
+  <section class="py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="mb-10 text-center">
+        <h3 class="text-3xl font-bold text-gray-900">Practical Parent Information</h3>
+        <p class="mx-auto mt-3 max-w-2xl text-gray-600">The everyday details families look for before booking a tour or submitting an application.</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <span class="material-symbols-outlined text-primary text-3xl">schedule</span>
+          <h4 class="mt-4 font-bold text-gray-900">School Start Times</h4>
+          <p class="mt-2 text-sm text-gray-600">Foundation Phase starts at 08:00. Intermediate and Senior Phase starts at 07:45.</p>
+        </div>
+        <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <span class="material-symbols-outlined text-primary text-3xl">restaurant</span>
+          <h4 class="mt-4 font-bold text-gray-900">Meals &amp; Care</h4>
+          <p class="mt-2 text-sm text-gray-600">Nutritious meals, aftercare options, and holiday programme support help families manage busy routines.</p>
+        </div>
+        <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <span class="material-symbols-outlined text-primary text-3xl">pool</span>
+          <h4 class="mt-4 font-bold text-gray-900">Swimming</h4>
+          <p class="mt-2 text-sm text-gray-600">In-house swimming lessons support water safety, confidence, and stroke correction.</p>
+        </div>
+        <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <span class="material-symbols-outlined text-primary text-3xl">emoji_events</span>
+          <h4 class="mt-4 font-bold text-gray-900">Recognition</h4>
+          <p class="mt-2 text-sm text-gray-600">Regular assemblies celebrate learner effort, achievements, and growth throughout the year.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="mb-10 text-center">
+        <h3 class="text-3xl font-bold text-gray-900">Campus Life in Pictures</h3>
+        <p class="mx-auto mt-3 max-w-2xl text-gray-600">A glimpse of the spaces and daily moments families ask about most: swimming, transport, assemblies, and early learning.</p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-4 md:grid-rows-2">
+        <figure class="relative overflow-hidden rounded-xl md:col-span-2 md:row-span-2">
+          <img src="assets/featured/swimming-action.jpg" alt="Learners enjoying swimming at Rising Stars Academy" class="h-full min-h-80 w-full object-cover"/>
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-gray-950/80 to-transparent p-5 text-white"><span class="text-sm font-bold">In-house swimming</span><p class="mt-1 text-sm text-white/80">Water safety, confidence, and movement built into school life.</p></figcaption>
+        </figure>
+        <figure class="relative overflow-hidden rounded-xl">
+          <img src="assets/featured/shuttle.jpg" alt="Learners boarding the school shuttle" class="h-52 w-full object-cover"/>
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-gray-950/75 to-transparent p-4 text-sm font-bold text-white">Shuttle support</figcaption>
+        </figure>
+        <figure class="relative overflow-hidden rounded-xl">
+          <img src="assets/featured/hall.jpg" alt="Rising Stars Academy hall and assembly space" class="h-52 w-full object-cover"/>
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-gray-950/75 to-transparent p-4 text-sm font-bold text-white">Assembly space</figcaption>
+        </figure>
+        <figure class="relative overflow-hidden rounded-xl md:col-span-2">
+          <img src="assets/featured/pool.jpg" alt="Indoor swimming pool at Rising Stars Academy" class="h-52 w-full object-cover"/>
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-gray-950/75 to-transparent p-4 text-sm font-bold text-white">Facilities families can see on a campus tour</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section class="mx-4 sm:mx-6 mb-16 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 p-8 sm:p-12 text-center">
     <h3 class="text-3xl font-bold text-gray-900 sm:text-4xl">Come See the Difference</h3>
     <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-700">Book a campus tour and experience the Rising Stars environment in person.</p>
@@ -375,12 +476,15 @@ tailwind.config = {
 
 <!-- ==================== LITTLE STARS EDUCARE ==================== -->
 <div id="page-educare" class="page fade-in">
-  <section class="educare-gradient py-16 sm:py-24 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10"><div class="absolute top-10 right-10 w-80 h-80 bg-white rounded-full blur-3xl"></div></div>
+  <section class="py-16 sm:py-24 relative overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(90deg, rgba(230,126,34,0.92), rgba(230,126,34,0.62)), url('assets/featured/educare-hero.jpg');">
     <div class="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-4"><span class="material-symbols-outlined text-white text-sm">child_care</span><span class="text-white/90 text-sm font-medium">Ages 3 months - 6 years</span></div>
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Little Stars Educare</h2>
       <p class="mt-4 text-lg text-white/80 max-w-2xl mx-auto">Where little minds begin their journey of discovery in a safe, warm, and stimulating environment.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a onclick="startEnrollment('educare', 'Grade R')" class="flex h-12 items-center justify-center rounded-lg bg-white px-7 text-base font-bold text-educare shadow-lg transition-transform hover:scale-105 cursor-pointer">Start Enrollment</a>
+        <a onclick="bookTour('Little Stars Educare')" class="flex h-12 items-center justify-center rounded-lg border border-white/35 bg-white/15 px-7 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/25 cursor-pointer">Book a Tour</a>
+      </div>
     </div>
   </section>
   <section class="py-16 sm:py-20">
@@ -407,18 +511,58 @@ tailwind.config = {
           <div class="rounded-xl border-2 border-educare/20 bg-white p-6 text-center hover:border-educare/50 transition-colors"><div class="text-3xl mb-2">&#128218;</div><h4 class="font-bold text-gray-900">Grade R</h4><p class="text-xs text-gray-500 mt-1">5 - 6 years</p></div>
         </div>
       </div>
+      <div class="mt-16">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-widest text-educare">Meet the team</p>
+            <h3 class="mt-2 text-2xl font-bold text-gray-900">Early Years Teachers</h3>
+            <p class="mt-2 max-w-2xl text-sm text-gray-600">A warm introduction to the educators supporting babies, toddlers, and school-readiness classes at Little Stars Educare.</p>
+          </div>
+          <a onclick="showPage('staff')" class="inline-flex h-10 items-center justify-center rounded-lg bg-educare px-5 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 cursor-pointer">View All Staff</a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240531-WA0031.jpg" alt="Bunny Class teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Bunny Class</h4><p class="mt-1 text-sm font-medium text-educare">3 to 18 Months</p></div>
+          </article>
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240531-WA0033.jpg" alt="Tiny Tot Class teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Tiny Tot Class</h4><p class="mt-1 text-sm font-medium text-educare">18 months - 2 Years</p></div>
+          </article>
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240531-WA0038.jpg" alt="Teddy Class teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Teddy Class</h4><p class="mt-1 text-sm font-medium text-educare">2 - 3 Years</p></div>
+          </article>
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240524-WA0044.jpg" alt="Grade R teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Grade R</h4><p class="mt-1 text-sm font-medium text-educare">School readiness</p></div>
+          </article>
+        </div>
+      </div>
+      <div class="mt-16 rounded-2xl border border-educare/20 bg-educare-light p-8 sm:p-10 text-center">
+        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Ready to visit Little Stars?</h3>
+        <p class="mx-auto mt-3 max-w-2xl text-gray-600">Meet the early years team, see the classrooms, and talk through the right starting point for your child.</p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <a onclick="startEnrollment('educare', 'Grade R')" class="inline-flex h-11 items-center justify-center rounded-lg bg-educare px-6 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 cursor-pointer">Start Enrollment</a>
+          <a onclick="bookTour('Little Stars Educare')" class="inline-flex h-11 items-center justify-center rounded-lg border-2 border-educare px-6 text-sm font-bold text-educare transition-all hover:bg-educare hover:text-white cursor-pointer">Book a Tour</a>
+          <a href="https://risingstarsacademy.co.za/wp-content/uploads/2025/10/Rising-Stars-Academy-Fees-2026.pdf" target="_blank" rel="noopener" class="inline-flex h-11 items-center justify-center rounded-lg bg-white px-6 text-sm font-bold text-gray-700 shadow-sm transition-all hover:text-educare cursor-pointer">Download Fees</a>
+        </div>
+      </div>
     </div>
   </section>
 </div>
 
 <!-- ==================== RISING STARS PRIMARY ==================== -->
 <div id="page-primarysch" class="page fade-in">
-  <section class="prim-gradient py-16 sm:py-24 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10"><div class="absolute top-10 right-10 w-80 h-80 bg-white rounded-full blur-3xl"></div></div>
+  <section class="py-16 sm:py-24 relative overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(90deg, rgba(39,174,96,0.92), rgba(39,174,96,0.62)), url('assets/featured/primary-hero.jpg');">
     <div class="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-4"><span class="material-symbols-outlined text-white text-sm">auto_stories</span><span class="text-white/90 text-sm font-medium">Grade R - Grade 7</span></div>
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Rising Stars Primary</h2>
       <p class="mt-4 text-lg text-white/80 max-w-2xl mx-auto">Building strong academic foundations through the CAPS curriculum in a supportive, engaging environment.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a onclick="startEnrollment('primary', 'Grade 1')" class="flex h-12 items-center justify-center rounded-lg bg-white px-7 text-base font-bold text-prim shadow-lg transition-transform hover:scale-105 cursor-pointer">Start Enrollment</a>
+        <a onclick="bookTour('Rising Stars Primary')" class="flex h-12 items-center justify-center rounded-lg border border-white/35 bg-white/15 px-7 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/25 cursor-pointer">Book a Tour</a>
+      </div>
     </div>
   </section>
   <section class="py-16 sm:py-20">
@@ -447,18 +591,58 @@ tailwind.config = {
           <div class="bg-white rounded-xl border border-gray-200 p-4"><span class="material-symbols-outlined text-prim text-2xl">code</span><p class="text-xs font-medium mt-2">Coding</p></div>
         </div>
       </div>
+      <div class="mt-16">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-widest text-prim">Meet the team</p>
+            <h3 class="mt-2 text-2xl font-bold text-gray-900">Primary Phase Teachers</h3>
+            <p class="mt-2 max-w-2xl text-sm text-gray-600">A first look at the educators guiding learners through the primary years, with the full staff gallery available on the dedicated staff page.</p>
+          </div>
+          <a onclick="showPage('staff')" class="inline-flex h-10 items-center justify-center rounded-lg bg-prim px-5 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 cursor-pointer">View All Staff</a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240524-WA0038.jpg" alt="Grade 2 teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Grade 2</h4><p class="mt-1 text-sm font-medium text-prim">Principal</p></div>
+          </article>
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240524-WA0033.jpg" alt="Grade 3 teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Grade 3</h4><p class="mt-1 text-sm font-medium text-prim">Foundation Phase</p></div>
+          </article>
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240524-WA0046.jpg" alt="Grade 5 teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Grade 5</h4><p class="mt-1 text-sm font-medium text-prim">Mathematics, NST &amp; Tech</p></div>
+          </article>
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240524-WA0047.jpg" alt="Grade 7 register teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Grade 7 Register Teacher</h4><p class="mt-1 text-sm font-medium text-prim">Afrikaans, NS, Social Science, EMS &amp; Tech</p></div>
+          </article>
+        </div>
+      </div>
+      <div class="mt-16 rounded-2xl border border-prim/20 bg-prim-light p-8 sm:p-10 text-center">
+        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Start your child's primary school journey</h3>
+        <p class="mx-auto mt-3 max-w-2xl text-gray-600">Explore the curriculum, meet the educators, and get clear guidance on grades, fees, and next steps.</p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <a onclick="startEnrollment('primary', 'Grade 1')" class="inline-flex h-11 items-center justify-center rounded-lg bg-prim px-6 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 cursor-pointer">Start Enrollment</a>
+          <a onclick="bookTour('Rising Stars Primary')" class="inline-flex h-11 items-center justify-center rounded-lg border-2 border-prim px-6 text-sm font-bold text-prim transition-all hover:bg-prim hover:text-white cursor-pointer">Book a Tour</a>
+          <a href="https://risingstarsacademy.co.za/wp-content/uploads/2025/10/Rising-Stars-Academy-Fees-2026.pdf" target="_blank" rel="noopener" class="inline-flex h-11 items-center justify-center rounded-lg bg-white px-6 text-sm font-bold text-gray-700 shadow-sm transition-all hover:text-prim cursor-pointer">Download Fees</a>
+        </div>
+      </div>
     </div>
   </section>
 </div>
 
 <!-- ==================== RISING STARS HIGH ==================== -->
 <div id="page-highsch" class="page fade-in">
-  <section class="high-gradient py-16 sm:py-24 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10"><div class="absolute top-10 right-10 w-80 h-80 bg-white rounded-full blur-3xl"></div></div>
+  <section class="py-16 sm:py-24 relative overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(90deg, rgba(86,42,111,0.94), rgba(142,68,173,0.62)), url('assets/featured/high-hero.jpg');">
     <div class="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <div class="inline-flex items-center gap-2 bg-white/20 rounded-full px-4 py-1.5 mb-4"><span class="material-symbols-outlined text-white text-sm">school</span><span class="text-white/90 text-sm font-medium">Grade 8 - Grade 12</span></div>
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Rising Stars High</h2>
       <p class="mt-4 text-lg text-white/80 max-w-2xl mx-auto">Preparing young adults for university and beyond with rigorous academics and leadership development.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a onclick="startEnrollment('high', 'Grade 8')" class="flex h-12 items-center justify-center rounded-lg bg-white px-7 text-base font-bold text-high shadow-lg transition-transform hover:scale-105 cursor-pointer">Start Enrollment</a>
+        <a onclick="bookTour('Rising Stars High')" class="flex h-12 items-center justify-center rounded-lg border border-white/35 bg-white/15 px-7 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/25 cursor-pointer">Book a Tour</a>
+      </div>
     </div>
   </section>
   <section class="py-16 sm:py-20">
@@ -508,13 +692,50 @@ tailwind.config = {
           </div>
         </div>
       </div>
+      <div class="mt-16">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-widest text-high">Meet the team</p>
+            <h3 class="mt-2 text-2xl font-bold text-gray-900">Senior Phase Teachers</h3>
+            <p class="mt-2 max-w-2xl text-sm text-gray-600">A quick look at the senior phase and specialist educators supporting learners as they move toward high school and matric pathways.</p>
+          </div>
+          <a onclick="showPage('staff')" class="inline-flex h-10 items-center justify-center rounded-lg bg-high px-5 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 cursor-pointer">View All Staff</a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240524-WA0049.jpg" alt="Grade 9 register teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Grade 9 Register Teacher</h4><p class="mt-1 text-sm font-medium text-high">English Home Language &amp; Social Science</p></div>
+          </article>
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240524-WA0048.jpg" alt="Grade 10 register teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Grade 10 Register Teacher</h4><p class="mt-1 text-sm font-medium text-high">EGD, CAT, NST &amp; Tech</p></div>
+          </article>
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240524-WA0039.jpg" alt="Head of Intermediate, Senior and FET Phase" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Head of Intermediate, Senior &amp; FET Phase</h4><p class="mt-1 text-sm font-medium text-high">Afrikaans</p></div>
+          </article>
+          <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+            <img src="assets/teachers/IMG-20240524-WA0041.jpg" alt="Head of Sports" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/>
+            <div class="p-4"><h4 class="font-bold text-gray-900">Head of Sports</h4><p class="mt-1 text-sm font-medium text-high">Sports programme</p></div>
+          </article>
+        </div>
+      </div>
+      <div class="mt-16 rounded-2xl border border-high/20 bg-high-light p-8 sm:p-10 text-center">
+        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Prepare for the next phase</h3>
+        <p class="mx-auto mt-3 max-w-2xl text-gray-600">Talk to us about subject pathways, senior phase expectations, and how we support learners toward matric.</p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <a onclick="startEnrollment('high', 'Grade 8')" class="inline-flex h-11 items-center justify-center rounded-lg bg-high px-6 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 cursor-pointer">Start Enrollment</a>
+          <a onclick="bookTour('Rising Stars High')" class="inline-flex h-11 items-center justify-center rounded-lg border-2 border-high px-6 text-sm font-bold text-high transition-all hover:bg-high hover:text-white cursor-pointer">Book a Tour</a>
+          <a href="https://risingstarsacademy.co.za/wp-content/uploads/2025/10/Rising-Stars-Academy-Fees-2026.pdf" target="_blank" rel="noopener" class="inline-flex h-11 items-center justify-center rounded-lg bg-white px-6 text-sm font-bold text-gray-700 shadow-sm transition-all hover:text-high cursor-pointer">Download Fees</a>
+        </div>
+      </div>
     </div>
   </section>
 </div>
 
 <!-- ==================== ENROLLMENTS & FEES PAGE ==================== -->
 <div id="page-admissions" class="page fade-in">
-  <section class="bg-brand py-16 sm:py-24">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.95), rgba(27,58,92,0.68)), url('assets/gallery/educare-classroom.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Enrollments &amp; Fees</h2>
       <p class="mt-4 text-lg text-white/70 max-w-2xl mx-auto">Everything parents need in one place: enrollment steps, online forms, downloadable documents, and fee information.</p>
@@ -567,13 +788,13 @@ tailwind.config = {
         <div>
           <h3 class="text-2xl font-bold text-gray-900 mb-2">Online Enrollment Enquiry</h3>
           <p class="text-gray-600 mb-8">This prototype shows the enquiry flow. On the live site, this will route into dedicated online forms for Educare, Primary, and High School.</p>
-          <form class="space-y-5" onsubmit="event.preventDefault(); alert('Thank you! This is a prototype — on the live site, this will submit to the selected Wix Enrollment Form.');">
+          <form id="admissionsForm" class="space-y-5" onsubmit="event.preventDefault(); alert('Thank you! This is a prototype — on the live site, this will submit to the selected online enrollment form.');">
             <div><label class="block text-sm font-medium text-gray-700 mb-1">Parent/Guardian Name</label><input class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Enter your name" type="text"/></div>
             <div><label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label><input class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Enter your email" type="email"/></div>
             <div><label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label><input class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="+27 (0) ..." type="tel"/></div>
             <div class="grid sm:grid-cols-2 gap-5">
               <div><label class="block text-sm font-medium text-gray-700 mb-1">Applying For</label>
-                <select class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition">
+                <select id="admissionsSchool" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition">
                   <option>Select School</option>
                   <option>Little Stars Educare (3 months - 6 years)</option>
                   <option>Rising Stars Primary (Grade R - 7)</option>
@@ -581,7 +802,7 @@ tailwind.config = {
                 </select>
               </div>
               <div><label class="block text-sm font-medium text-gray-700 mb-1">Intended Grade</label>
-                <select class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition">
+                <select id="admissionsGrade" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition">
                   <option>Select Grade</option>
                   <option>Baby Class</option><option>Toddlers</option><option>Grade RR</option><option>Grade R</option>
                   <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option><option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option>
@@ -596,37 +817,37 @@ tailwind.config = {
         <div>
           <h3 class="text-2xl font-bold text-gray-900 mb-8">Enrollment Forms &amp; Downloads</h3>
           <div class="space-y-4 mb-8">
-            <a class="flex items-center gap-4 p-4 rounded-xl bg-educare-light border border-educare/20 hover:border-educare/40 transition-all group cursor-pointer" href="#">
+            <a class="flex items-center gap-4 p-4 rounded-xl bg-educare-light border border-educare/20 hover:border-educare/40 transition-all group cursor-pointer" href="https://risingstarsacademy.co.za/wp-content/uploads/2024/10/ECD-Enrolment-forms.pdf" target="_blank" rel="noopener">
               <div class="flex items-center justify-center rounded-lg bg-educare/10 shrink-0 w-12 h-12 text-educare transition-colors"><span class="material-symbols-outlined">child_care</span></div>
               <div class="flex-grow"><p class="font-bold text-gray-800">Educare Enrollment Form</p><p class="text-sm text-gray-500">Ages 3 months - Grade R</p></div>
               <span class="material-symbols-outlined text-gray-400 group-hover:text-educare transition-colors">open_in_new</span>
             </a>
-            <a class="flex items-center gap-4 p-4 rounded-xl bg-prim-light border border-prim/20 hover:border-prim/40 transition-all group cursor-pointer" href="#">
+            <a class="flex items-center gap-4 p-4 rounded-xl bg-prim-light border border-prim/20 hover:border-prim/40 transition-all group cursor-pointer" href="https://risingstarsacademy.co.za/wp-content/uploads/2024/10/Primary-School-Enrolment-forms.pdf" target="_blank" rel="noopener">
               <div class="flex items-center justify-center rounded-lg bg-prim/10 shrink-0 w-12 h-12 text-prim transition-colors"><span class="material-symbols-outlined">auto_stories</span></div>
               <div class="flex-grow"><p class="font-bold text-gray-800">Primary Enrollment Form</p><p class="text-sm text-gray-500">Grade 1 - Grade 7</p></div>
               <span class="material-symbols-outlined text-gray-400 group-hover:text-prim transition-colors">open_in_new</span>
             </a>
-            <a class="flex items-center gap-4 p-4 rounded-xl bg-high-light border border-high/20 hover:border-high/40 transition-all group cursor-pointer" href="#">
+            <a class="flex items-center gap-4 p-4 rounded-xl bg-high-light border border-high/20 hover:border-high/40 transition-all group cursor-pointer" href="https://risingstarsacademy.co.za/wp-content/uploads/2024/10/High-School-Enrolment-forms-Copy.pdf" target="_blank" rel="noopener">
               <div class="flex items-center justify-center rounded-lg bg-high/10 shrink-0 w-12 h-12 text-high transition-colors"><span class="material-symbols-outlined">school</span></div>
               <div class="flex-grow"><p class="font-bold text-gray-800">High School Enrollment Form</p><p class="text-sm text-gray-500">Grade 8 - Grade 12</p></div>
               <span class="material-symbols-outlined text-gray-400 group-hover:text-high transition-colors">open_in_new</span>
             </a>
           </div>
           <div class="space-y-4">
-            <a class="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-200 hover:bg-primary/5 hover:border-primary/30 transition-all group cursor-pointer" href="#">
+            <a class="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-200 hover:bg-primary/5 hover:border-primary/30 transition-all group cursor-pointer" href="https://risingstarsacademy.co.za/wp-content/uploads/2025/10/Rising-Stars-Academy-Fees-2026.pdf" target="_blank" rel="noopener">
               <div class="flex items-center justify-center rounded-lg bg-primary/10 shrink-0 w-12 h-12 group-hover:bg-primary group-hover:text-white text-primary transition-colors"><span class="material-symbols-outlined">description</span></div>
-              <div class="flex-grow"><p class="font-bold text-gray-800">PDF Enrollment Forms</p><p class="text-sm text-gray-500">Backup forms for all three schools</p></div>
+              <div class="flex-grow"><p class="font-bold text-gray-800">2026 Fee Structure</p><p class="text-sm text-gray-500">Term fees, transport, and payment details</p></div>
               <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">download</span>
             </a>
-            <a class="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-200 hover:bg-primary/5 hover:border-primary/30 transition-all group cursor-pointer" href="#">
+            <a class="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-200 hover:bg-primary/5 hover:border-primary/30 transition-all group cursor-pointer" href="https://risingstarsacademy.co.za/enrolments-fees/" target="_blank" rel="noopener">
               <div class="flex items-center justify-center rounded-lg bg-primary/10 shrink-0 w-12 h-12 group-hover:bg-primary group-hover:text-white text-primary transition-colors"><span class="material-symbols-outlined">policy</span></div>
-              <div class="flex-grow"><p class="font-bold text-gray-800">Enrollment Policy</p><p class="text-sm text-gray-500">Process and requirements</p></div>
-              <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">download</span>
+              <div class="flex-grow"><p class="font-bold text-gray-800">Current Forms Hub</p><p class="text-sm text-gray-500">Live enrolments and fees page</p></div>
+              <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">open_in_new</span>
             </a>
-            <a class="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-200 hover:bg-primary/5 hover:border-primary/30 transition-all group cursor-pointer" href="#">
+            <a class="flex items-center gap-4 p-4 rounded-xl bg-gray-50 border border-gray-200 hover:bg-primary/5 hover:border-primary/30 transition-all group cursor-pointer" onclick="showPage('contact')">
               <div class="flex items-center justify-center rounded-lg bg-primary/10 shrink-0 w-12 h-12 group-hover:bg-primary group-hover:text-white text-primary transition-colors"><span class="material-symbols-outlined">receipt_long</span></div>
-              <div class="flex-grow"><p class="font-bold text-gray-800">Fee Structure 2026</p><p class="text-sm text-gray-500">Term fees, transport, and payment details</p></div>
-              <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">download</span>
+              <div class="flex-grow"><p class="font-bold text-gray-800">Speak to Admissions</p><p class="text-sm text-gray-500">Ask a question or book a tour</p></div>
+              <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">arrow_forward</span>
             </a>
           </div>
           <div class="mt-8 rounded-xl border border-gray-200 bg-gray-50 p-5">
@@ -635,6 +856,15 @@ tailwind.config = {
               <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>Detailed fee structure available as downloadable PDF</li>
               <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>Shuttle options available (one-way and return)</li>
               <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>Aftercare and holiday programme options available</li>
+            </ul>
+          </div>
+          <div class="mt-5 rounded-xl border border-gray-200 bg-white p-5">
+            <h4 class="font-bold text-gray-900 mb-3">Common Application Documents</h4>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">description</span>Parent/guardian contact details and learner information</li>
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">description</span>Birth certificate or ID documentation</li>
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">description</span>Latest school report where applicable</li>
+              <li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-base mt-0.5">description</span>Proof of address and medical or learning support notes where relevant</li>
             </ul>
           </div>
           <div class="mt-10 rounded-xl bg-gradient-to-r from-primary/10 to-accent/10 p-6 text-center">
@@ -674,166 +904,111 @@ tailwind.config = {
 
 <!-- ==================== OUR STAFF PAGE ==================== -->
 <div id="page-staff" class="page fade-in">
-  <section class="bg-brand py-16 sm:py-24">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.96), rgba(27,58,92,0.72)), url('assets/gallery/primary-reading.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Our Dedicated Staff</h2>
-      <p class="mt-4 text-lg text-white/70">Meet the passionate educators who shape every child's learning journey at Rising Stars.</p>
+      <p class="mt-4 text-lg text-white/70">Meet the educators who guide learners from their earliest classroom moments through the senior phase.</p>
     </div>
   </section>
 
-  <!-- Little Stars Educare Staff -->
-  <section class="py-16 sm:py-20">
+  <section class="py-14 sm:py-16">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="mb-16">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="w-1 h-8 bg-educare rounded-full"></div>
-          <h3 class="text-3xl font-bold text-gray-900">Little Stars Educare</h3>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="rounded-xl border border-educare/20 bg-educare-light p-5">
+          <p class="text-3xl font-black text-educare">10</p>
+          <p class="mt-1 text-sm font-semibold text-gray-800">Early years &amp; Grade R roles</p>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5930copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-educare font-medium">Educator - Baby Class</p>
-              <p class="text-xs text-gray-500 mt-2">ECD Qualification</p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5937copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-educare font-medium">Educator - Toddlers</p>
-              <p class="text-xs text-gray-500 mt-2">ECD Qualification</p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5955copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-educare font-medium">Educator - Grade RR</p>
-              <p class="text-xs text-gray-500 mt-2">ECD Qualification</p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5970copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-educare font-medium">Educator - Grade R</p>
-              <p class="text-xs text-gray-500 mt-2">ECD Qualification</p>
-            </div>
-          </div>
+        <div class="rounded-xl border border-prim/20 bg-prim-light p-5">
+          <p class="text-3xl font-black text-prim">8</p>
+          <p class="mt-1 text-sm font-semibold text-gray-800">Primary phase roles</p>
         </div>
-        <p class="text-center text-sm text-gray-400 mt-6">Real staff photos integrated. Names & qualifications to be confirmed by in-laws.</p>
+        <div class="rounded-xl border border-high/20 bg-high-light p-5">
+          <p class="text-3xl font-black text-high">6</p>
+          <p class="mt-1 text-sm font-semibold text-gray-800">Senior phase &amp; specialist roles</p>
+        </div>
+      </div>
+      <p class="mt-5 text-sm text-gray-500">Teacher names can be added once confirmed. The current labels and images are matched from the live Rising Stars Academy staff section.</p>
+    </div>
+  </section>
+
+  <section class="pb-16 sm:pb-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="mb-10 flex items-center gap-3">
+        <div class="h-9 w-1 rounded-full bg-educare"></div>
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-educare">Little Stars Educare</p>
+          <h3 class="text-3xl font-bold text-gray-900">Early Years Team</h3>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0031.jpg" alt="Bunny Class teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Bunny Class</h4><p class="mt-1 text-sm text-educare font-medium">3 to 18 Months</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0037.jpg" alt="Bunny Class assistant" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Bunny Class Assistant</h4><p class="mt-1 text-sm text-educare font-medium">Class support</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0033.jpg" alt="Tiny Tot Class teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Tiny Tot Class</h4><p class="mt-1 text-sm text-educare font-medium">18 months - 2 Years</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0039.jpg" alt="Tiny Tot assistant" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Tiny Tot Assistant</h4><p class="mt-1 text-sm text-educare font-medium">Class support</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0038.jpg" alt="Teddy Class teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Teddy Class</h4><p class="mt-1 text-sm text-educare font-medium">2 - 3 Years</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0034.jpg" alt="Teddy Class assistant" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Teddy Class Assistant</h4><p class="mt-1 text-sm text-educare font-medium">Class support</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0032.jpg" alt="Hippo Class teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Hippo Class</h4><p class="mt-1 text-sm text-educare font-medium">3 - 4 Years</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0036.jpg" alt="Tiger Class teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Tiger Class</h4><p class="mt-1 text-sm text-educare font-medium">4 - 5 Years</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0044.jpg" alt="Grade R teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade R</h4><p class="mt-1 text-sm text-educare font-medium">School readiness</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0040.jpg" alt="Grade R assistant" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade R Assistant</h4><p class="mt-1 text-sm text-educare font-medium">Class support</p></div></article>
       </div>
     </div>
   </section>
 
-  <!-- Rising Stars Primary Staff -->
   <section class="bg-white py-16 sm:py-20">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="mb-16">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="w-1 h-8 bg-prim rounded-full"></div>
-          <h3 class="text-3xl font-bold text-gray-900">Rising Stars Primary</h3>
+      <div class="mb-10 flex items-center gap-3">
+        <div class="h-9 w-1 rounded-full bg-prim"></div>
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-prim">Rising Stars Primary</p>
+          <h3 class="text-3xl font-bold text-gray-900">Primary Phase Team</h3>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5982copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-prim font-medium">Principal / Grade Lead</p>
-              <p class="text-xs text-gray-500 mt-2">B.Ed Qualification</p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5986copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-prim font-medium">Mathematics Teacher</p>
-              <p class="text-xs text-gray-500 mt-2">B.Ed Mathematics</p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5988copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-prim font-medium">English Teacher</p>
-              <p class="text-xs text-gray-500 mt-2">B.Ed Languages</p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5994copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-prim font-medium">Afrikaans Teacher</p>
-              <p class="text-xs text-gray-500 mt-2">B.Ed Languages</p>
-            </div>
-          </div>
-        </div>
-        <p class="text-center text-sm text-gray-400 mt-6">Real staff photos integrated. Names & qualifications to be confirmed by in-laws.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/brand/rs-logo-mark-320.png" alt="Rising Stars Academy logo for Grade 1 photo to be confirmed" class="h-56 w-full object-contain bg-prim-light p-8"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 1</h4><p class="mt-1 text-sm text-gray-500">Photo to be confirmed</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0038.jpg" alt="Grade 2 teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 2</h4><p class="mt-1 text-sm text-prim font-medium">Principal</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240531-WA0035.jpg" alt="Grade 2 assistant" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 2 Assistant</h4><p class="mt-1 text-sm text-prim font-medium">Class support</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0033.jpg" alt="Grade 3 teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 3</h4><p class="mt-1 text-sm text-prim font-medium">Foundation Phase</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0040.jpg" alt="Grade 4 teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 4</h4><p class="mt-1 text-sm text-prim font-medium">Intermediate Phase</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0046.jpg" alt="Grade 5 teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 5</h4><p class="mt-1 text-sm text-prim font-medium">Mathematics, NST &amp; Tech</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0045.jpg" alt="Grade 6 register teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 6 Register Teacher</h4><p class="mt-1 text-sm text-prim font-medium">English, NST &amp; Tech, Social Science</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0047.jpg" alt="Grade 7 register teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 7 Register Teacher</h4><p class="mt-1 text-sm text-prim font-medium">Afrikaans, NS, Social Science, EMS &amp; Tech</p></div></article>
       </div>
     </div>
   </section>
 
-  <!-- Rising Stars High Staff -->
   <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="mb-16">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="w-1 h-8 bg-high rounded-full"></div>
-          <h3 class="text-3xl font-bold text-gray-900">Rising Stars High</h3>
+      <div class="mb-10 flex items-center gap-3">
+        <div class="h-9 w-1 rounded-full bg-high"></div>
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-high">Senior &amp; Specialist Staff</p>
+          <h3 class="text-3xl font-bold text-gray-900">Senior Phase Team</h3>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5930copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-high font-medium">Headmaster/Principal</p>
-              <p class="text-xs text-gray-500 mt-2">B.Sc, B.Ed, M.Ed</p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5937copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-high font-medium">Head of Mathematics</p>
-              <p class="text-xs text-gray-500 mt-2">B.Sc Mathematics, B.Ed</p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5955copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-high font-medium">Head of English</p>
-              <p class="text-xs text-gray-500 mt-2">B.A English, B.Ed</p>
-            </div>
-          </div>
-          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-            <div class="aspect-square bg-cover bg-center" style="background-image: url('https://risingstarsacademy.co.za/wp-content/uploads/2024/01/4P2A5970copy.jpg');"></div>
-            <div class="p-4">
-              <h4 class="font-bold text-gray-900">Staff Name</h4>
-              <p class="text-sm text-high font-medium">Career Counselor</p>
-              <p class="text-xs text-gray-500 mt-2">B.A Psychology, B.Ed</p>
-            </div>
-          </div>
-        </div>
-        <p class="text-center text-sm text-gray-400 mt-6">Real staff photos integrated. Names & qualifications to be confirmed by in-laws.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/brand/rs-logo-mark-320.png" alt="Rising Stars Academy logo for Grade 8 photo to be confirmed" class="h-56 w-full object-contain bg-high-light p-8"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 8 Register Teacher</h4><p class="mt-1 text-sm text-high font-medium">Mathematics, Economic &amp; Management Sciences</p><p class="mt-2 text-xs text-gray-500">Photo to be confirmed</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0049.jpg" alt="Grade 9 register teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 9 Register Teacher</h4><p class="mt-1 text-sm text-high font-medium">English Home Language &amp; Social Science</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0048.jpg" alt="Grade 10 register teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Grade 10 Register Teacher</h4><p class="mt-1 text-sm text-high font-medium">EGD, CAT, NST &amp; Tech</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0042.jpg" alt="Life Skills, Life Orientation and Creative Arts teacher" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Life Skills, LO &amp; Creative Arts</h4><p class="mt-1 text-sm text-high font-medium">Specialist educator</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0039.jpg" alt="Head of Intermediate, Senior and FET Phase and Afrikaans" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Head of Intermediate, Senior &amp; FET Phase</h4><p class="mt-1 text-sm text-high font-medium">Afrikaans</p></div></article>
+        <article class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"><img src="assets/teachers/IMG-20240524-WA0041.jpg" alt="Head of Sports" class="h-80 sm:h-64 lg:h-56 w-full object-contain bg-gray-50"/><div class="p-4"><h4 class="font-bold text-gray-900">Head of Sports</h4><p class="mt-1 text-sm text-high font-medium">Sports programme</p></div></article>
       </div>
     </div>
   </section>
 
   <section class="mx-4 sm:mx-6 mb-16 rounded-2xl bg-gradient-to-r from-primary/10 to-accent/10 p-8 sm:p-12 text-center">
-    <h3 class="text-3xl font-bold text-gray-900 sm:text-4xl">Meet Our Team</h3>
-    <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-700">Each member of the Rising Stars team is committed to fostering academic excellence, personal growth, and community values in every learner.</p>
+    <h3 class="text-3xl font-bold text-gray-900 sm:text-4xl">Want to Meet the Team?</h3>
+    <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-700">Book a tour to meet the teachers, see the classrooms, and find the right fit for your child.</p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <a onclick="showPage('contact')" class="flex h-12 items-center justify-center rounded-lg bg-primary px-7 text-base font-bold text-white shadow-lg transition-transform hover:scale-105 cursor-pointer">Get in Touch</a>
+      <a onclick="showPage('contact')" class="flex h-12 items-center justify-center rounded-lg bg-primary px-7 text-base font-bold text-white shadow-lg transition-transform hover:scale-105 cursor-pointer">Book a Tour</a>
     </div>
   </section>
 </div>
 
 <!-- ==================== GALLERY PAGE ==================== -->
 <div id="page-gallery" class="page fade-in">
-  <section class="bg-brand py-16 sm:py-24">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.94), rgba(27,58,92,0.64)), url('assets/gallery/primary-activities.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Our Gallery</h2>
       <p class="mt-4 text-lg text-white/70">Experience life at Rising Stars Academy through moments of learning, growth, and achievement.</p>
@@ -843,31 +1018,76 @@ tailwind.config = {
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <!-- Filter tabs -->
       <div class="flex flex-wrap justify-center gap-2 mb-12">
-        <button class="px-5 py-2 rounded-full bg-primary text-white text-sm font-medium">All</button>
-        <button class="px-5 py-2 rounded-full bg-educare/10 text-educare text-sm font-medium hover:bg-educare hover:text-white transition-colors">Little Stars</button>
-        <button class="px-5 py-2 rounded-full bg-prim/10 text-prim text-sm font-medium hover:bg-prim hover:text-white transition-colors">Primary</button>
-        <button class="px-5 py-2 rounded-full bg-high/10 text-high text-sm font-medium hover:bg-high hover:text-white transition-colors">High School</button>
-        <button class="px-5 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium hover:bg-gray-200 transition-colors">Campus</button>
+        <button data-gallery-filter class="gallery-active px-5 py-2 rounded-full bg-primary text-white text-sm font-medium transition-colors" onclick="filterGallery('all', this)">All</button>
+        <button data-gallery-filter class="px-5 py-2 rounded-full bg-educare/10 text-educare text-sm font-medium hover:bg-educare hover:text-white transition-colors" onclick="filterGallery('educare', this)">Little Stars</button>
+        <button data-gallery-filter class="px-5 py-2 rounded-full bg-prim/10 text-prim text-sm font-medium hover:bg-prim hover:text-white transition-colors" onclick="filterGallery('primary', this)">Primary</button>
+        <button data-gallery-filter class="px-5 py-2 rounded-full bg-high/10 text-high text-sm font-medium hover:bg-high hover:text-white transition-colors" onclick="filterGallery('high', this)">High School</button>
+        <button data-gallery-filter class="px-5 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium hover:bg-gray-200 transition-colors" onclick="filterGallery('campus', this)">Campus</button>
       </div>
       <!-- Gallery grid -->
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div class="aspect-square rounded-xl bg-cover bg-center" style="background-image: url('Assets/4P2A6116copy.jpg');"></div>
-        <div class="aspect-square rounded-xl bg-cover bg-center col-span-1 md:col-span-2 md:row-span-2" style="background-image: url('Assets/4P2A6812.jpg');"></div>
-        <div class="aspect-square rounded-xl bg-cover bg-center" style="background-image: url('Assets/4P2A6124copy.jpg');"></div>
-        <div class="aspect-square rounded-xl bg-cover bg-center" style="background-image: url('Assets/4P2A6121copy.jpg');"></div>
-        <div class="aspect-square rounded-xl bg-cover bg-center" style="background-image: url('Assets/4P2A6153copy.jpg');"></div>
-        <div class="aspect-square rounded-xl bg-cover bg-center" style="background-image: url('Assets/4P2A6162copy.jpg');"></div>
-        <div class="aspect-square rounded-xl bg-cover bg-center" style="background-image: url('Assets/2023/12/School-Pool.jpg');"></div>
-        <div class="aspect-square rounded-xl bg-cover bg-center" style="background-image: url('Assets/2023/12/Playground.jpg');"></div>
+        <figure data-gallery-item data-category="educare campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6116copy.jpg" alt="Little Stars outdoor play area" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="primary" class="group overflow-hidden rounded-xl bg-white shadow-sm col-span-1 md:col-span-2 md:row-span-2">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6812.jpg" alt="Primary school classroom learning" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6124copy.jpg" alt="Rising Stars school grounds" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6121copy.jpg" alt="Learners moving through campus" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="educare campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6153copy.jpg" alt="Playground equipment at Little Stars" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="educare" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/educare-learning.jpg" alt="Educare learners in class" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="educare" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/educare-classroom.jpg" alt="Little Stars classroom activity" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="educare" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/educare-play.jpg" alt="Young learners during play-based learning" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="primary" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/primary-reading.jpg" alt="Primary learner reading activity" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="primary" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/primary-classroom.jpg" alt="Primary classroom lesson" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="primary" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/primary-activities.jpg" alt="Primary school activity session" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="high" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/high-study.jpg" alt="High school learners studying" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="high" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/high-life.jpg" alt="High school learners on campus" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/2023/12/School-Pool.jpg" alt="School swimming pool" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/2023/12/Playground.jpg" alt="Outdoor playground facilities" loading="lazy">
+        </figure>
       </div>
-      <p class="text-center text-sm text-gray-400 mt-8">Gallery now uses photos from the current Rising Stars website assets.</p>
+      <p class="text-center text-sm text-gray-400 mt-8">Use the filters above to browse Little Stars, Primary, High School, and campus moments.</p>
+      <div class="mt-12 rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
+        <h3 class="text-2xl font-bold text-gray-900">Want to see these spaces for yourself?</h3>
+        <p class="mx-auto mt-3 max-w-2xl text-gray-600">Book a campus tour to walk through the classrooms, playgrounds, swimming areas, and school facilities with the admissions team.</p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <a onclick="bookTour('Rising Stars Academy')" class="inline-flex h-11 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 cursor-pointer">Book a Tour</a>
+          <a onclick="showPage('admissions')" class="inline-flex h-11 items-center justify-center rounded-lg border-2 border-primary px-6 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-white cursor-pointer">View Admissions</a>
+        </div>
+      </div>
     </div>
   </section>
 </div>
 
 <!-- ==================== CONTACT PAGE ==================== -->
 <div id="page-contact" class="page fade-in">
-  <section class="bg-brand py-16 sm:py-24">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.95), rgba(27,58,92,0.68)), url('assets/featured/shuttle.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Get in Touch</h2>
       <p class="mt-4 text-lg text-white/70">We're here to help! Reach out with any questions about Rising Stars Academy.</p>
@@ -882,22 +1102,28 @@ tailwind.config = {
             <div>
               <h4 class="font-semibold text-gray-900 mb-3">General Enquiries</h4>
               <div class="space-y-2">
-                <div class="flex items-center gap-3 text-gray-600"><span class="material-symbols-outlined text-primary text-xl">phone</span>+27 (0) 11 555 1234</div>
-                <div class="flex items-center gap-3 text-gray-600"><span class="material-symbols-outlined text-primary text-xl">mail</span>info@risingstarsacademy.co.za</div>
-                <div class="flex items-center gap-3 text-gray-600"><span class="material-symbols-outlined text-primary text-xl">schedule</span>Mon - Fri: 8:00 AM - 4:00 PM</div>
+                <div class="flex items-start gap-3 text-sm sm:text-base text-gray-600"><span class="material-symbols-outlined text-primary text-xl shrink-0">phone</span><span class="min-w-0 break-words">021-822-5400</span></div>
+                <div class="flex items-start gap-3 text-sm sm:text-base text-gray-600"><span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span><span class="min-w-0 break-all">principal@risingstarsacademy.co.za</span></div>
+                <div class="flex items-start gap-3 text-sm sm:text-base text-gray-600"><span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span><span class="min-w-0 break-all">admin@risingstarsacademy.co.za</span></div>
+                <div class="flex items-start gap-3 text-sm sm:text-base text-gray-600"><span class="material-symbols-outlined text-primary text-xl shrink-0">schedule</span><span class="min-w-0 break-words">Mon - Fri: 8:00 AM - 6:00 PM</span></div>
               </div>
             </div>
             <div>
               <h4 class="font-semibold text-gray-900 mb-3">Admissions Office</h4>
               <div class="space-y-2">
-                <div class="flex items-center gap-3 text-gray-600"><span class="material-symbols-outlined text-primary text-xl">phone</span>+27 (0) 11 555 5678</div>
-                <div class="flex items-center gap-3 text-gray-600"><span class="material-symbols-outlined text-primary text-xl">mail</span>admissions@risingstarsacademy.co.za</div>
+                <div class="flex items-start gap-3 text-sm sm:text-base text-gray-600"><span class="material-symbols-outlined text-primary text-xl shrink-0">phone</span><span class="min-w-0 break-words">021-822-5400</span></div>
+                <div class="flex items-start gap-3 text-sm sm:text-base text-gray-600"><span class="material-symbols-outlined text-primary text-xl shrink-0">mail</span><span class="min-w-0 break-all">admin@risingstarsacademy.co.za</span></div>
               </div>
             </div>
             <div>
               <h4 class="font-semibold text-gray-900 mb-3">Location</h4>
-              <p class="text-gray-600 mb-3">Main campus located in the heart of Johannesburg. We welcome prospective students and their families for tours and information sessions.</p>
-              <div class="w-full h-48 rounded-xl bg-gray-200 flex items-center justify-center"><span class="material-symbols-outlined text-gray-400 text-4xl">map</span><span class="text-sm text-gray-400 ml-2">Google Maps embed on live site</span></div>
+              <p class="text-gray-600 mb-3">6 Circle Road, Sunridge, Table View, 7441. We welcome prospective students and their families for tours and information sessions.</p>
+              <div class="relative h-56 w-full overflow-hidden rounded-xl bg-cover bg-center" style="background-image: linear-gradient(rgba(27,58,92,0.20), rgba(27,58,92,0.74)), url('assets/featured/shuttle.jpg');">
+                <div class="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <p class="text-sm font-bold">Visit our Table View campus</p>
+                  <p class="mt-1 text-xs text-white/80">Google Maps embed can be connected on the live site.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -907,7 +1133,15 @@ tailwind.config = {
           <form class="space-y-5" onsubmit="event.preventDefault(); alert('Thank you! This is a prototype.');">
             <div><label class="block text-sm font-medium text-gray-700 mb-1">Your Name</label><input class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Enter your name" type="text"/></div>
             <div><label class="block text-sm font-medium text-gray-700 mb-1">Your Email</label><input class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Enter your email" type="email"/></div>
-            <div><label class="block text-sm font-medium text-gray-700 mb-1">Subject</label><input class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Enter the subject" type="text"/></div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-1">How can we help?</label>
+              <select id="contactType" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition">
+                <option>Book a tour</option>
+                <option>Admissions question</option>
+                <option>Fees and forms</option>
+                <option>General enquiry</option>
+              </select>
+            </div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-1">Subject</label><input id="contactSubject" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Enter the subject" type="text"/></div>
             <div><label class="block text-sm font-medium text-gray-700 mb-1">Your Message</label><textarea class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Enter your message" rows="4"></textarea></div>
             <button class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-primary/90 transition-all duration-300 transform hover:scale-[1.02]" type="submit">Submit Enquiry</button>
           </form>
@@ -923,7 +1157,7 @@ tailwind.config = {
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <div>
         <div class="flex items-center gap-3 mb-4">
-          <div class="flex items-center justify-center h-10 w-10 rounded-xl bg-primary text-white font-black text-lg">RS</div>
+          <img src="assets/brand/rs-logo-mark-320.png" alt="Rising Stars Academy logo" class="h-12 w-12 shrink-0 object-contain"/>
           <span class="text-lg font-bold">Rising Stars Academy</span>
         </div>
         <p class="text-sm text-gray-400 leading-relaxed">Nurturing bright minds from 3 months to Grade 12. Three specialised schools, one caring family.</p>
@@ -937,27 +1171,35 @@ tailwind.config = {
         </ul>
       </div>
       <div>
-        <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+        <h4 class="font-semibold text-white mb-4">Admissions</h4>
         <ul class="space-y-2 text-sm">
-          <li><a onclick="showPage('about')" class="text-gray-400 hover:text-white cursor-pointer transition-colors">About Us</a></li>
-          <li><a onclick="showPage('whyrisingstars')" class="text-gray-400 hover:text-white cursor-pointer transition-colors">Why Rising Stars</a></li>
           <li><a onclick="showPage('admissions')" class="text-gray-400 hover:text-white cursor-pointer transition-colors">Enrollments &amp; Fees</a></li>
+          <li><a onclick="startEnrollment('educare', 'Grade R')" class="text-gray-400 hover:text-educare cursor-pointer transition-colors">Apply for Educare</a></li>
+          <li><a onclick="startEnrollment('primary', 'Grade 1')" class="text-gray-400 hover:text-prim cursor-pointer transition-colors">Apply for Primary</a></li>
+          <li><a onclick="startEnrollment('high', 'Grade 8')" class="text-gray-400 hover:text-high cursor-pointer transition-colors">Apply for High School</a></li>
+          <li><a onclick="showPage('contact')" class="text-gray-400 hover:text-white cursor-pointer transition-colors">Book a Tour</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-white mb-4">About</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a onclick="showPage('about')" class="text-gray-400 hover:text-white cursor-pointer transition-colors">Our Story</a></li>
+          <li><a onclick="showPage('whyrisingstars')" class="text-gray-400 hover:text-white cursor-pointer transition-colors">Why Rising Stars</a></li>
           <li><a onclick="showPage('staff')" class="text-gray-400 hover:text-white cursor-pointer transition-colors">Our Staff</a></li>
           <li><a onclick="showPage('gallery')" class="text-gray-400 hover:text-white cursor-pointer transition-colors">Gallery</a></li>
           <li><a onclick="showPage('contact')" class="text-gray-400 hover:text-white cursor-pointer transition-colors">Contact Us</a></li>
         </ul>
       </div>
-      <div>
-        <h4 class="font-semibold text-white mb-4">Contact</h4>
-        <ul class="space-y-2 text-sm text-gray-400">
-          <li>+27 (0) 11 555 1234</li>
-          <li>info@risingstarsacademy.co.za</li>
-          <li>Johannesburg, South Africa</li>
-        </ul>
-        <div class="flex gap-3 mt-4">
-          <a class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"><span class="text-sm font-bold">f</span></a>
-          <a class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"><span class="text-sm font-bold">in</span></a>
-          <a class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors cursor-pointer"><span class="text-sm font-bold">ig</span></a>
+    </div>
+    <div class="mt-10 rounded-xl border border-white/10 bg-white/5 p-5">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h4 class="font-semibold text-white">Contact Rising Stars Academy</h4>
+          <p class="mt-1 text-sm text-gray-400">021-822-5400 · admin@risingstarsacademy.co.za · 6 Circle Road, Sunridge, Table View, 7441</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="tel:+27218225400" class="inline-flex h-10 items-center justify-center rounded-lg bg-white px-5 text-sm font-bold text-gray-900 transition-transform hover:scale-105">Call</a>
+          <a onclick="bookTour('Rising Stars Academy')" class="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold text-white transition-transform hover:scale-105 cursor-pointer">Book a Tour</a>
         </div>
       </div>
     </div>
@@ -972,7 +1214,14 @@ tailwind.config = {
 </footer>
 
 <!-- ======== PROTOTYPE BANNER ======== -->
-<div class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-gray-900/90 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full shadow-lg z-50 flex items-center gap-2">
+<div class="fixed inset-x-0 bottom-0 z-50 border-t border-gray-200 bg-white/95 p-3 shadow-2xl backdrop-blur-md lg:hidden">
+  <div class="mx-auto grid max-w-md grid-cols-2 gap-3">
+    <a onclick="showPage('admissions')" class="flex h-11 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-white shadow-md cursor-pointer">Apply Now</a>
+    <a href="tel:+27218225400" class="flex h-11 items-center justify-center rounded-lg border-2 border-primary px-4 text-sm font-bold text-primary">Call</a>
+  </div>
+</div>
+
+<div class="fixed bottom-4 left-1/2 z-50 hidden -translate-x-1/2 items-center gap-2 rounded-full bg-gray-900/90 px-4 py-2 text-xs font-medium text-white shadow-lg backdrop-blur-sm lg:flex">
   <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
   Interactive Prototype &mdash; Rising Stars Academy v2
 </div>
@@ -992,6 +1241,39 @@ function showPage(page) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function closeMobile() { document.getElementById('mobileMenu').classList.add('hidden'); }
+function startEnrollment(phase, grade) {
+  const schoolValues = {
+    educare: 'Little Stars Educare (3 months - 6 years)',
+    primary: 'Rising Stars Primary (Grade R - 7)',
+    high: 'Rising Stars High (Grade 8 - 12)'
+  };
+  showPage('admissions');
+  setTimeout(() => {
+    const schoolSelect = document.getElementById('admissionsSchool');
+    const gradeSelect = document.getElementById('admissionsGrade');
+    if (schoolSelect && schoolValues[phase]) schoolSelect.value = schoolValues[phase];
+    if (gradeSelect && grade) gradeSelect.value = grade;
+    const form = document.getElementById('admissionsForm');
+    if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 120);
+}
+function bookTour(context) {
+  showPage('contact');
+  setTimeout(() => {
+    const subject = document.getElementById('contactSubject');
+    const type = document.getElementById('contactType');
+    if (type) type.value = 'Book a tour';
+    if (subject) subject.value = 'Book a tour' + (context ? ' - ' + context : '');
+  }, 120);
+}
+function filterGallery(category, button) {
+  document.querySelectorAll('[data-gallery-item]').forEach(item => {
+    const categories = item.dataset.category.split(' ');
+    item.classList.toggle('hidden', category !== 'all' && !categories.includes(category));
+  });
+  document.querySelectorAll('[data-gallery-filter]').forEach(filter => filter.classList.remove('gallery-active'));
+  if (button) button.classList.add('gallery-active');
+}
 showPage('home');
 </script>
 </body>
