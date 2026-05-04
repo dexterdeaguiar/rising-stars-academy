@@ -341,7 +341,7 @@ tailwind.config = {
 
 <!-- ==================== ABOUT PAGE ==================== -->
 <div id="page-about" class="page fade-in">
-  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.95), rgba(27,58,92,0.72)), url('assets/gallery/primary-classroom.jpg');">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.95), rgba(27,58,92,0.72)), url('assets/gallery/Featured/primary-classroom.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">About Rising Stars Academy</h2>
       <p class="mt-4 text-lg text-white/70">Discover our rich history, core values, and commitment to nurturing future leaders.</p>
@@ -788,7 +788,7 @@ tailwind.config = {
 
 <!-- ==================== ENROLLMENTS & FEES PAGE ==================== -->
 <div id="page-admissions" class="page fade-in">
-  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.95), rgba(27,58,92,0.68)), url('assets/gallery/educare-classroom.jpg');">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.95), rgba(27,58,92,0.68)), url('assets/gallery/Featured/educare-classroom.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Enrollments &amp; Fees</h2>
       <p class="mt-4 text-lg text-white/70 max-w-2xl mx-auto">Everything parents need in one place: enrollment steps, online forms, downloadable documents, and fee information.</p>
@@ -952,7 +952,7 @@ tailwind.config = {
 
 <!-- ==================== OUR STAFF PAGE ==================== -->
 <div id="page-staff" class="page fade-in">
-  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.96), rgba(27,58,92,0.72)), url('assets/gallery/primary-reading.jpg');">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.96), rgba(27,58,92,0.72)), url('assets/gallery/Featured/primary-reading.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Our Dedicated Staff</h2>
       <p class="mt-4 text-lg text-white/70">Meet the educators who guide learners from their earliest classroom moments through the senior phase.</p>
@@ -1056,7 +1056,7 @@ tailwind.config = {
 
 <!-- ==================== GALLERY PAGE ==================== -->
 <div id="page-gallery" class="page fade-in">
-  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.94), rgba(27,58,92,0.64)), url('assets/gallery/primary-activities.jpg');">
+  <section class="relative overflow-hidden bg-cover bg-center py-16 sm:py-24" style="background-image: linear-gradient(90deg, rgba(27,58,92,0.94), rgba(27,58,92,0.64)), url('assets/gallery/Facilities/primary-activities.jpg');">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 text-center">
       <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Our Gallery</h2>
       <p class="mt-4 text-lg text-white/70">Experience life at Rising Stars Academy through moments of learning, growth, and achievement.</p>
@@ -1066,61 +1066,201 @@ tailwind.config = {
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <!-- Filter tabs -->
       <div class="flex flex-wrap justify-center gap-2 mb-12">
-        <button data-gallery-filter class="gallery-active px-5 py-2 rounded-full bg-primary text-white text-sm font-medium transition-colors" onclick="filterGallery('all', this)">All</button>
-        <button data-gallery-filter class="px-5 py-2 rounded-full bg-educare/10 text-educare text-sm font-medium hover:bg-educare hover:text-white transition-colors" onclick="filterGallery('educare', this)">Little Stars</button>
-        <button data-gallery-filter class="px-5 py-2 rounded-full bg-prim/10 text-prim text-sm font-medium hover:bg-prim hover:text-white transition-colors" onclick="filterGallery('primary', this)">Primary</button>
-        <button data-gallery-filter class="px-5 py-2 rounded-full bg-high/10 text-high text-sm font-medium hover:bg-high hover:text-white transition-colors" onclick="filterGallery('high', this)">High School</button>
-        <button data-gallery-filter class="px-5 py-2 rounded-full bg-gray-100 text-gray-600 text-sm font-medium hover:bg-gray-200 transition-colors" onclick="filterGallery('campus', this)">Campus</button>
+        <button data-gallery-filter class="gallery-active px-5 py-2 rounded-full text-sm font-medium transition-colors bg-primary/10 text-primary hover:bg-primary hover:text-white" onclick="filterGallery('campus', this)">Campus</button>
+        <button data-gallery-filter class="px-5 py-2 rounded-full text-sm font-medium transition-colors bg-prim/10 text-prim hover:bg-prim hover:text-white" onclick="filterGallery('classrooms', this)">Classrooms</button>
+        <button data-gallery-filter class="px-5 py-2 rounded-full text-sm font-medium transition-colors bg-high/10 text-high hover:bg-high hover:text-white" onclick="filterGallery('facilities', this)">Facilities</button>
+        <button data-gallery-filter class="px-5 py-2 rounded-full text-sm font-medium transition-colors bg-educare/10 text-educare hover:bg-educare hover:text-white" onclick="filterGallery('moments', this)">Moments</button>
       </div>
       <!-- Gallery grid -->
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <figure data-gallery-item data-category="educare campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6116copy.jpg" alt="Little Stars outdoor play area" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="primary" class="group overflow-hidden rounded-xl bg-white shadow-sm col-span-1 md:col-span-2 md:row-span-2">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/primary-classroom.jpg" alt="Primary school classroom learning" loading="lazy">
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm col-span-1 md:col-span-2 md:row-span-2">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus.jpg" alt="Rising Stars Academy campus view 1" loading="lazy">
         </figure>
         <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6124copy.jpg" alt="Rising Stars school grounds" loading="lazy">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus1.jpg" alt="Rising Stars Academy campus view 2" loading="lazy">
         </figure>
         <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6121copy.jpg" alt="Learners moving through campus" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="educare campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6153copy.jpg" alt="Playground equipment at Little Stars" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="educare" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/educare-learning.jpg" alt="Educare learners in class" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="educare" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/educare-classroom.jpg" alt="Little Stars classroom activity" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="educare" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/educare-play.jpg" alt="Young learners during play-based learning" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="primary" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/primary-reading.jpg" alt="Primary learner reading activity" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="primary" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/primary-classroom.jpg" alt="Primary classroom lesson" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="primary" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/primary-activities.jpg" alt="Primary school activity session" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="high" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/high-study.jpg" alt="High school learners studying" loading="lazy">
-        </figure>
-        <figure data-gallery-item data-category="high" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/high-life.jpg" alt="High school learners on campus" loading="lazy">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus11.jpg" alt="Rising Stars Academy campus view 3" loading="lazy">
         </figure>
         <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6812.jpg" alt="School swimming pool" loading="lazy">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus12.jpg" alt="Rising Stars Academy campus view 4" loading="lazy">
         </figure>
         <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6153copy.jpg" alt="Outdoor playground facilities" loading="lazy">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus13.jpg" alt="Rising Stars Academy campus view 5" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus14.jpg" alt="Rising Stars Academy campus view 6" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus19.jpg" alt="Rising Stars Academy campus view 7" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus2.jpg" alt="Rising Stars Academy campus view 8" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus5.jpg" alt="Rising Stars Academy campus view 9" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Campus/campus6.jpg" alt="Rising Stars Academy campus view 10" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm col-span-1 md:col-span-2 md:row-span-2 hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/classroom1.jpg" alt="Rising Stars Academy classroom learning 1" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/classroom2.jpg" alt="Rising Stars Academy classroom learning 2" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/classroom3.jpg" alt="Rising Stars Academy classroom learning 3" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/classroom4.jpg" alt="Rising Stars Academy classroom learning 4" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/classroom5-highschool.jpg" alt="Rising Stars Academy classroom learning 5" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/little-stars1.jpg" alt="Rising Stars Academy classroom learning 6" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/little-stars2.jpg" alt="Rising Stars Academy classroom learning 7" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/little-stars3.jpg" alt="Rising Stars Academy classroom learning 8" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/little-stars4.jpg" alt="Rising Stars Academy classroom learning 9" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/little-stars8.jpg" alt="Rising Stars Academy classroom learning 10" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="classrooms" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Classrooms/little-stars9.jpg" alt="Rising Stars Academy classroom learning 11" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm col-span-1 md:col-span-2 md:row-span-2 hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/campus-pool.jpg" alt="Rising Stars Academy facilities 1" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/campus10.jpg" alt="Rising Stars Academy facilities 2" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/campus15.jpg" alt="Rising Stars Academy facilities 3" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/campus16.jpg" alt="Rising Stars Academy facilities 4" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/campus17.jpg" alt="Rising Stars Academy facilities 5" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/campus18.jpg" alt="Rising Stars Academy facilities 6" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/campus7.jpg" alt="Rising Stars Academy facilities 7" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/campus8.jpg" alt="Rising Stars Academy facilities 8" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/campus9.jpg" alt="Rising Stars Academy facilities 9" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/hall.jpg" alt="Rising Stars Academy facilities 10" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/hall2.jpg" alt="Rising Stars Academy facilities 11" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/little-stars10.jpg.jpg" alt="Rising Stars Academy facilities 12" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/little-stars5.jpg" alt="Rising Stars Academy facilities 13" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/little-stars6.jpg" alt="Rising Stars Academy facilities 14" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/little-stars7.jpg" alt="Rising Stars Academy facilities 15" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="facilities" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Facilities/primary-activities.jpg" alt="Rising Stars Academy facilities 16" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm col-span-1 md:col-span-2 md:row-span-2 hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/campus20.jpg" alt="Rising Stars Academy school life moment 1" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/educare-classroom.jpg" alt="Rising Stars Academy school life moment 2" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/educare-learning.jpg" alt="Rising Stars Academy school life moment 3" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/educare-play.jpg" alt="Rising Stars Academy school life moment 4" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature.jpg" alt="Rising Stars Academy school life moment 5" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature10.jpg" alt="Rising Stars Academy school life moment 6" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature11.jpg" alt="Rising Stars Academy school life moment 7" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature12.jpg" alt="Rising Stars Academy school life moment 8" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature2.jpg" alt="Rising Stars Academy school life moment 9" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature20.jpg" alt="Rising Stars Academy school life moment 10" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature21.jpg" alt="Rising Stars Academy school life moment 11" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature22.jpg" alt="Rising Stars Academy school life moment 12" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature23.jpg" alt="Rising Stars Academy school life moment 13" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature24.jpg" alt="Rising Stars Academy school life moment 14" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature25.jpg" alt="Rising Stars Academy school life moment 15" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature26.jpg" alt="Rising Stars Academy school life moment 16" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature28.jpg" alt="Rising Stars Academy school life moment 17" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature4.jpg" alt="Rising Stars Academy school life moment 18" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature5.jpg" alt="Rising Stars Academy school life moment 19" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature8.jpg" alt="Rising Stars Academy school life moment 20" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/feature9.jpg" alt="Rising Stars Academy school life moment 21" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/high-life.jpg" alt="Rising Stars Academy school life moment 22" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/high-study.jpg" alt="Rising Stars Academy school life moment 23" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/primary-classroom.jpg" alt="Rising Stars Academy school life moment 24" loading="lazy">
+        </figure>
+        <figure data-gallery-item data-category="moments" class="group overflow-hidden rounded-xl bg-white shadow-sm hidden">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/Featured/primary-reading.jpg" alt="Rising Stars Academy school life moment 25" loading="lazy">
         </figure>
       </div>
-      <p class="text-center text-sm text-gray-400 mt-8">Use the filters above to browse Little Stars, Primary, High School, and campus moments.</p>
+      <p class="text-center text-sm text-gray-400 mt-8">Use the filters above to browse campus spaces, classrooms, facilities, and everyday moments at Rising Stars.</p>
       <div class="mt-12 rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
         <h3 class="text-2xl font-bold text-gray-900">Want to see these spaces for yourself?</h3>
         <p class="mx-auto mt-3 max-w-2xl text-gray-600">Book a campus tour to walk through the classrooms, playgrounds, swimming areas, and school facilities with the admissions team.</p>
