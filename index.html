@@ -73,7 +73,7 @@ tailwind.config = {
     <nav class="hidden lg:flex items-center gap-1" id="mainNav">
       <a onclick="showPage('home')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="home">Home</a>
       <div class="relative group">
-        <a class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all flex items-center gap-1" data-page="schools">
+        <a onclick="showPage('educare')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all flex items-center gap-1" data-page="schools">
           Our Schools <span class="material-symbols-outlined text-sm">expand_more</span>
         </a>
         <div class="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
@@ -91,8 +91,56 @@ tailwind.config = {
           </a>
         </div>
       </div>
-      <a onclick="showPage('admissions')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="admissions">Admissions</a>
-      <a onclick="showPage('whyrisingstars')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="whyrisingstars">Why Rising Stars</a>
+      <div class="relative group">
+        <a onclick="showPage('about')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all flex items-center gap-1" data-page="about">
+          About <span class="material-symbols-outlined text-sm">expand_more</span>
+        </a>
+        <div class="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
+          <a onclick="showPage('whyrisingstars')" class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-primary text-xl">stars</span>
+            <div><div class="text-sm font-semibold text-gray-900">Why Rising Stars</div><div class="text-xs text-gray-500">What makes the school different</div></div>
+          </a>
+          <a onclick="showPage('about')" class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-primary text-xl">history_edu</span>
+            <div><div class="text-sm font-semibold text-gray-900">Our Story</div><div class="text-xs text-gray-500">Who we are and how we started</div></div>
+          </a>
+          <a onclick="showPage('staff')" class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-primary text-xl">groups</span>
+            <div><div class="text-sm font-semibold text-gray-900">Our Staff</div><div class="text-xs text-gray-500">Meet the teaching team</div></div>
+          </a>
+          <a onclick="showPage('gallery')" class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-primary text-xl">photo_library</span>
+            <div><div class="text-sm font-semibold text-gray-900">Gallery</div><div class="text-xs text-gray-500">Campus, classes and activities</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="relative group">
+        <a onclick="showPage('admissions')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all flex items-center gap-1" data-page="admissions">
+          Admissions <span class="material-symbols-outlined text-sm">expand_more</span>
+        </a>
+        <div class="absolute top-full left-0 mt-1 w-72 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
+          <a onclick="showPage('admissions')" class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-primary text-xl">receipt_long</span>
+            <div><div class="text-sm font-semibold text-gray-900">Enrollment &amp; Fees</div><div class="text-xs text-gray-500">Steps, downloads and fee structure</div></div>
+          </a>
+          <a onclick="startEnrollment('educare', 'Grade R')" class="flex items-center gap-3 p-3 rounded-lg hover:bg-educare-light cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-educare text-xl">child_care</span>
+            <div><div class="text-sm font-semibold text-gray-900">Apply for Educare</div><div class="text-xs text-gray-500">Ages 3 months - Grade R</div></div>
+          </a>
+          <a onclick="startEnrollment('primary', 'Grade 1')" class="flex items-center gap-3 p-3 rounded-lg hover:bg-prim-light cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-prim text-xl">auto_stories</span>
+            <div><div class="text-sm font-semibold text-gray-900">Apply for Primary</div><div class="text-xs text-gray-500">Grade 1 - Grade 7</div></div>
+          </a>
+          <a onclick="startEnrollment('high', 'Grade 8')" class="flex items-center gap-3 p-3 rounded-lg hover:bg-high-light cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-high text-xl">school</span>
+            <div><div class="text-sm font-semibold text-gray-900">Apply for High School</div><div class="text-xs text-gray-500">Grade 8 - Grade 12</div></div>
+          </a>
+          <a onclick="bookTour('Rising Stars Academy')" class="flex items-center gap-3 p-3 rounded-lg hover:bg-primary/5 cursor-pointer transition-colors">
+            <span class="material-symbols-outlined text-primary text-xl">event_available</span>
+            <div><div class="text-sm font-semibold text-gray-900">Book a Tour</div><div class="text-xs text-gray-500">Visit the campus with admissions</div></div>
+          </a>
+        </div>
+      </div>
       <a onclick="showPage('contact')" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary cursor-pointer rounded-lg transition-all" data-page="contact">Contact</a>
     </nav>
     <div class="flex items-center gap-2">
@@ -109,12 +157,17 @@ tailwind.config = {
     <a onclick="showPage('educare');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-educare hover:bg-educare-light cursor-pointer pl-8">Little Stars Educare</a>
     <a onclick="showPage('primarysch');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-prim hover:bg-prim-light cursor-pointer pl-8">Rising Stars Primary</a>
     <a onclick="showPage('highsch');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-high hover:bg-high-light cursor-pointer pl-8">Rising Stars High</a>
-    <p class="px-4 pt-3 text-[11px] font-bold uppercase tracking-widest text-gray-400">Explore</p>
-    <a onclick="showPage('admissions');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Admissions</a>
-    <a onclick="showPage('whyrisingstars');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Why Rising Stars</a>
-    <a onclick="showPage('about');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">About</a>
-    <a onclick="showPage('staff');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer">Our Staff</a>
-    <a onclick="showPage('gallery');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer">Gallery</a>
+    <p class="px-4 pt-3 text-[11px] font-bold uppercase tracking-widest text-gray-400">About</p>
+    <a onclick="showPage('whyrisingstars');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer pl-8">Why Rising Stars</a>
+    <a onclick="showPage('about');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer pl-8">Our Story</a>
+    <a onclick="showPage('staff');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer pl-8">Our Staff</a>
+    <a onclick="showPage('gallery');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-50 cursor-pointer pl-8">Gallery</a>
+    <p class="px-4 pt-3 text-[11px] font-bold uppercase tracking-widest text-gray-400">Admissions</p>
+    <a onclick="showPage('admissions');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer pl-8">Enrollment &amp; Fees</a>
+    <a onclick="startEnrollment('educare', 'Grade R');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-educare hover:bg-educare-light cursor-pointer pl-8">Apply for Educare</a>
+    <a onclick="startEnrollment('primary', 'Grade 1');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-prim hover:bg-prim-light cursor-pointer pl-8">Apply for Primary</a>
+    <a onclick="startEnrollment('high', 'Grade 8');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-high hover:bg-high-light cursor-pointer pl-8">Apply for High School</a>
+    <a onclick="bookTour('Rising Stars Academy');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer pl-8">Book a Tour</a>
     <a onclick="showPage('contact');closeMobile()" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 cursor-pointer">Contact</a>
   </div>
 </header>
@@ -1025,7 +1078,7 @@ tailwind.config = {
           <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6116copy.jpg" alt="Little Stars outdoor play area" loading="lazy">
         </figure>
         <figure data-gallery-item data-category="primary" class="group overflow-hidden rounded-xl bg-white shadow-sm col-span-1 md:col-span-2 md:row-span-2">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6812.jpg" alt="Primary school classroom learning" loading="lazy">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/primary-classroom.jpg" alt="Primary school classroom learning" loading="lazy">
         </figure>
         <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
           <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6124copy.jpg" alt="Rising Stars school grounds" loading="lazy">
@@ -1061,10 +1114,10 @@ tailwind.config = {
           <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/gallery/high-life.jpg" alt="High school learners on campus" loading="lazy">
         </figure>
         <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/2023/12/School-Pool.jpg" alt="School swimming pool" loading="lazy">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6812.jpg" alt="School swimming pool" loading="lazy">
         </figure>
         <figure data-gallery-item data-category="campus" class="group overflow-hidden rounded-xl bg-white shadow-sm">
-          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/2023/12/Playground.jpg" alt="Outdoor playground facilities" loading="lazy">
+          <img class="h-full min-h-40 w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105" src="assets/4P2A6153copy.jpg" alt="Outdoor playground facilities" loading="lazy">
         </figure>
       </div>
       <p class="text-center text-sm text-gray-400 mt-8">Use the filters above to browse Little Stars, Primary, High School, and campus moments.</p>
@@ -1232,6 +1285,10 @@ function showPage(page) {
   if (['educare','primarysch','highsch'].includes(page)) {
     const schoolsNav = document.querySelector('.nav-link[data-page="schools"]');
     if (schoolsNav) schoolsNav.classList.add('active-nav');
+  }
+  if (['about','whyrisingstars','staff','gallery'].includes(page)) {
+    const aboutNav = document.querySelector('.nav-link[data-page="about"]');
+    if (aboutNav) aboutNav.classList.add('active-nav');
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
