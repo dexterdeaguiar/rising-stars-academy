@@ -144,6 +144,10 @@ def p(text, style="Body"):
     return Paragraph(text, S[style])
 
 
+def header_p(text):
+    return p(f"<font color='white'><b>{text}</b></font>", "BodyTight")
+
+
 def bullet_items(items, style="BodyTight"):
     return ListFlowable(
         [ListItem(p(item, style), leftIndent=8) for item in items],
@@ -338,7 +342,7 @@ def primary_high_intro(level, grade_label, report_label):
         (report_label, "Latest school report or full academic history where applicable."),
         ("Transfer document", "Required if the learner comes from another school; hand in on or before the first school day."),
     ]
-    rows = [[p("<b>Attached</b>", "BodyTight"), p("<b>Required document</b>", "BodyTight"), p("<b>Notes</b>", "BodyTight")]]
+    rows = [[header_p("Attached"), header_p("Required document"), header_p("Notes")]]
     for title, note in docs:
         rows.append([p("[  ]", "CenterSmall"), p(title, "BodyTight"), p(note, "BodyTight")])
     table = Table(rows, colWidths=[22 * mm, 52 * mm, CONTENT_W - 74 * mm], repeatRows=1)
@@ -450,7 +454,7 @@ def parent_page():
         "Home email",
         "Marital status",
     ]
-    rows = [[p("", "BodyTight"), p("<b>Father / Guardian</b>", "BodyTight"), p("<b>Mother / Guardian</b>", "BodyTight")]]
+    rows = [[header_p(""), header_p("Father / Guardian"), header_p("Mother / Guardian")]]
     for label in row_labels:
         rows.append([p(f"<b>{label}</b>", "BodyTight"), p("_" * 34, "BodyTight"), p("_" * 34, "BodyTight")])
     table = Table(rows, colWidths=[42 * mm, (CONTENT_W - 42 * mm) / 2, (CONTENT_W - 42 * mm) / 2], repeatRows=1)
@@ -740,7 +744,7 @@ def build_fees():
     ]
 
     def fee_table(title, rows):
-        data = [[p(f"<b>{title}</b>", "BodyTight"), p("<b>Monthly fee</b>", "BodyTight")]]
+        data = [[header_p(title), header_p("Monthly fee")]]
         data += [[p(a, "BodyTight"), p(b, "BodyTight")] for a, b in rows]
         table = Table(data, colWidths=[CONTENT_W - 38 * mm, 38 * mm])
         table.setStyle(
